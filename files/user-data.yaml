@@ -1,0 +1,34 @@
+#cloud-config
+user: user
+password: pass
+chpasswd:
+  expire: False
+#package_reboot_if_required: true
+package_update: true
+package_upgrade: true
+packages:
+  - bash
+  - binutils-dev
+  - bison
+  - coreutils
+  - diffutils
+  - findutils
+  - gawk
+  - gcc
+  - g++
+  - grep
+  - gzip
+  - m4
+  - make
+  - patch
+  - perl
+  - python3-dev
+  - sed
+  - tar
+  - texinfo
+  - xz-utils
+power_state:
+  mode: reboot
+runcmd:
+  - [ln, --symbolic, --force, /bin/bash, /bin/sh]
+
