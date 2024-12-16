@@ -7,6 +7,7 @@ chpasswd:
 package_update: true
 package_upgrade: true
 packages:
+  - git
   - bash
   - binutils-dev
   - bison
@@ -31,4 +32,14 @@ power_state:
   mode: reboot
 runcmd:
   - [ln, --symbolic, --force, /bin/bash, /bin/sh]
+device_aliases: {lfs_disk: /dev/vdb}
+disk_setup:
+  lfs_disk:
+    layout: true
+    overwrite: true
+    table_type: mbr
+fs_setup:
+  - {device: lfs_disk.1, filesystem: ext4, label: lfs}
+mounts:
+  - [vdisk.1, /mnt/lfs]
 

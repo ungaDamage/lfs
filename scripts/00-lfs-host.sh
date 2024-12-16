@@ -31,6 +31,7 @@ if virsh list --all | grep --quiet --invert-match lfs-host; then
         --vcpus=2 \
         --import \
         --disk path=$WORKSPACE/$lfs_host,format=qcow2 \
+        --disk path=$WORKSPACE/lfs.qcow2,format=qcow2,size=30 \
         --os-variant=debian11 \
         --cloud-init user-data=files/user-data.yaml \
         --network default,model=e1000e 
